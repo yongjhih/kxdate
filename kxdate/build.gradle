@@ -6,12 +6,11 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.android.tools.build:gradle:2.2.2'
     }
 }
 
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
+apply plugin: 'java'
+apply plugin: 'kotlin'
 
 repositories {
     jcenter()
@@ -19,7 +18,8 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile 'com.jakewharton.threetenabp:threetenabp:1.0.4'
 
     testCompile 'junit:junit:4.12'
 }
+
+apply plugin: 'maven'

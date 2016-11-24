@@ -1,2 +1,4 @@
-rootProject.name = 'kxdate'
-
+//rootProject.name = 'kxdate'
+include ':kxdate'
+include ':kxdate-threetenbp'
+include ':kxdate-threetenbp-android'
