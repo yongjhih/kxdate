@@ -14,7 +14,6 @@ repositories {
 
 dependencies {
     compile group: 'org.threeten', name: 'threetenbp', version: '1.3.2', classifier: 'no-tzdb'
-    compile project(':kxdate')
 
     testCompile 'junit:junit:4.12'
 }
