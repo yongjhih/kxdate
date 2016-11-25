@@ -51,6 +51,11 @@ val Period.ago: LocalDate
 val Period.fromNow: LocalDate
     get() = baseDate() + this
 
+infix fun String.during(from: LocalDate) = LocalDate.parse(this).during(from)
+infix fun LocalDate.during(from: LocalDate) = Period.between(this, from)
+infix fun String.during(from: String) = LocalDate.parse(this) during LocalDate.parse(from)
+infix fun LocalDate.during(from: String) = during(LocalDate.parse(from))
+
 infix fun Int.nanoseconds(fromNow: fromNow) = baseTime().plusNanos(toLong())
 
 infix fun Int.nanoseconds(ago: ago) = baseTime().minusNanos(toLong())
