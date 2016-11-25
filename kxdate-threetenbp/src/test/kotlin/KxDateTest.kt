@@ -1,11 +1,8 @@
 package ru.yole.kxdate
 
 import kxdate.threeten.bp.*
-import org.junit.Test
 import org.threeten.bp.LocalDate
 import org.threeten.bp.LocalDate.now
-import org.threeten.bp.LocalDateTime
-import java.time.temporal.ChronoUnit
 
 import org.amshove.kluent.`should equal`
 import org.jetbrains.spek.api.Spek
@@ -53,5 +50,16 @@ class KxDateSpec: Spek ({
         it ("duringAge") {
             "1984-11-19".during(now()).years `should equal` Period.between(LocalDate.parse("1984-11-19"), LocalDate.now()).years
         }
+
+        it ("duringNowAge") {
+            // NOTICE race condition of now
+            "1984-11-19".duringNow.years `should equal` Period.between(LocalDate.parse("1984-11-19"), now()).years
+        }
+
+        it ("duringAgeInfix") {
+            ("1984-11-19" during "2016-11-19").years `should equal` Period.between(LocalDate.parse("1984-11-19"), LocalDate.parse("2016-11-19")).years
+        }
     }
 })
+
+

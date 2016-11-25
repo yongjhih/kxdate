@@ -4,6 +4,7 @@ import org.threeten.bp.Duration
 import org.threeten.bp.LocalDate
 import org.threeten.bp.LocalDateTime
 import org.threeten.bp.Period
+import org.threeten.bp.LocalDate.now
 
 object ago
 
@@ -50,6 +51,9 @@ val Period.ago: LocalDate
 
 val Period.fromNow: LocalDate
     get() = baseDate() + this
+
+val String.duringNow: Period
+    get() = this.during(now())
 
 infix fun String.during(from: LocalDate) = LocalDate.parse(this).during(from)
 infix fun LocalDate.during(from: LocalDate) = Period.between(this, from)
