@@ -82,3 +82,13 @@ dependencies {
     compile 'com.github.yongjhih.kxdate:kxdate-threetenbp-android:-SNAPSHOT'
 }
 ```
+
+In Application:
+
+```kt
+override fun onCreate() {
+  super.onCreate()
+
+  AndroidThreeTen.init(this)
+}
+```
