@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = '1.0.4'
+    ext.kotlin_version = '1.1.1'
 
     repositories {
         jcenter()
@@ -20,12 +20,12 @@ repositories {
 }
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion '24.0.1'
+    compileSdkVersion 25
+    buildToolsVersion '25.0.2'
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 22
+        targetSdkVersion 25
     }
 
     lintOptions {
@@ -35,7 +35,7 @@ android {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile 'com.jakewharton.threetenabp:threetenabp:1.0.4'
+    compile 'com.jakewharton.threetenabp:threetenabp:1.0.5'
     compile project(':kxdate-threetenbp')
 
     testCompile 'junit:junit:4.12'

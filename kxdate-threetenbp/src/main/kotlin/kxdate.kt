@@ -76,7 +76,7 @@ infix fun Int.seconds(later: later) = baseTime().plusSeconds(toLong())
 
 infix fun Int.seconds(ago: ago) = baseTime().minusSeconds(toLong())
 
-infix fun Int.minutes(later: frlateromNow) = baseTime().plusMinutes(toLong())
+infix fun Int.minutes(later: later) = baseTime().plusMinutes(toLong())
 
 infix fun Int.minutes(ago: ago) = baseTime().minusMinutes(toLong())
 
@@ -84,7 +84,7 @@ infix fun Int.hours(later: later) = baseTime().plusHours(toLong())
 
 infix fun Int.hours(ago: ago) = baseTime().minusHours(toLong())
 
-infix fun Int.days(later: frolatermNow) = baseDate().plusDays(toLong())
+infix fun Int.days(later: later) = baseDate().plusDays(toLong())
 
 infix fun Int.days(ago: ago) = baseDate().minusDays(toLong())
 
