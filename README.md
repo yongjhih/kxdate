@@ -17,10 +17,10 @@ Before:
 ```kt
 val threeSecondsLater = LocalDateTime.now() + Duration.ofSeconds(3L) // or LocalDateTime.now().plusSeconds(3L)
 val twoMonthsLater    = LocalDate.now() + Period.ofMonths(2L) // or LocalDate.now().plusMonths(2L)
-val yesterday = LocalDate.now() + Period.ofDays(-1L)
-val fourAndFiveYearsAgo = LocalDate.now() + Period.ofMonths(-4L) + Period.ofYears(-5L)
+val yesterday = LocalDate.now() + Period.ofDays(-1L) // or LocalDate.now().minusDays(1L)
+val fourAndFiveYearsAgo = LocalDate.now() + Period.ofMonths(-4L) + Period.ofYears(-5L) // or LocalDate.now().minusMonths(4L).minusYears(5L)
 
-val threeSecondsLaterDate = DateTimeUtils.toDate((LocalDateTime.now() + Duration.ofSeconds(3))
+val threeSecondsLaterDate = DateTimeUtils.toDate((LocalDateTime.now() + Duration.ofSeconds(3L)).atZone(ZoneId.systemDefault()).toInstant())
 ```
 
 After:
