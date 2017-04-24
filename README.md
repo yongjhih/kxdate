@@ -12,18 +12,33 @@ This library contains various Kotlin extensions for the [Java 8 java.time API](h
 
 kxdate supports the [Rails-style](http://guides.rubyonrails.org/active_support_core_extensions.html#time) syntax for defining date constants:
 
+Before:
+
+```kt
+val threeSecondsLater = LocalDateTime.now() + Duration.ofSeconds(3L) // or LocalDateTime.now().plusSeconds(3L)
+val twoMonthsLater    = LocalDate.now() + Period.ofMonths(2L) // or LocalDate.now().plusMonths(2L)
+val yesterday = LocalDate.now() + Period.ofDays(-1L)
+val fourAndFiveYearsAgo = LocalDate.now() + Period.ofMonths(-4L) + Period.ofYears(-5L)
+
+val threeSecondsLaterDate = DateTimeUtils.toDate((LocalDateTime.now() + Duration.ofSeconds(3))
 ```
-val twoMonthsLater = 2.months.fromNow
 
+After:
+
+```kt
+val threeSecondsLater = 3.seconds.later
+val twoMonthsLater = 2.months.later
 val yesterday = 1.days.ago
+val fourAndFiveYearsAgo = (4.months + 5.years).later
 
-(4.months + 5.years).fromNow
+val threeSecondsLaterDate = 3.seconds.later.toDate()
 ```
 
 Alternatively, you can use the infix call syntax:
 
 ```
-val twoMonthsLater = 2 months fromNow
+val threeSecondsLater = 3 seconds later
+val twoMonthsLater = 2 months later
 val yesterday = 1 days ago
 ```
 
