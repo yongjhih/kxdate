@@ -22,25 +22,25 @@ class KxDateTest {
 
     @Test
     fun oneWeekFromNow() {
-        val x = 1.weeks.fromNow
+        val x = 1.weeks.later
         assertEquals(LocalDate.now().plusDays(7), x)
     }
 
     @Test
     fun oneMonthFromNow() {
-        val x = 1.months.fromNow
+        val x = 1.months.later
         assertEquals(LocalDate.now().plusMonths(1), x)
     }
 
     @Test
     fun addDurations() {
-        val x = (4.months + 5.years).fromNow
+        val x = (4.months + 5.years).later
         assertEquals(LocalDate.now().plusMonths(4).plusYears(5), x)
     }
 
     @Test
     fun oneHourFromNow() {
-        val x = 1.hours.fromNow
+        val x = 1.hours.later
         Assert.assertEquals(LocalDateTime.now().plusHours(1).truncatedTo(ChronoUnit.HOURS), x.truncatedTo(ChronoUnit.HOURS))
     }
 }

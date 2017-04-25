@@ -5,6 +5,9 @@ import org.threeten.bp.LocalDate
 import org.threeten.bp.LocalDateTime
 import org.threeten.bp.Period
 import org.threeten.bp.LocalDate.now
+import org.threeten.bp.DateTimeUtils
+import org.threeten.bp.ZoneId
+import java.util.Date
 
 object ago
 
@@ -104,3 +107,8 @@ private fun baseDate() = LocalDate.now()
 
 private fun baseTime() = LocalDateTime.now()
 
+fun Date.toLocalDateTime() =
+    DateTimeUtils.toInstant(this).atZone(ZoneId.systemDefault()).toLocalDateTime()
+
+fun LocalDateTime.toDate() =
+    DateTimeUtils.toDate(this.atZone(ZoneId.systemDefault()).toInstant())

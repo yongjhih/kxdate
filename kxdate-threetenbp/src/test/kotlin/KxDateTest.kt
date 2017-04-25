@@ -7,6 +7,8 @@ import org.threeten.bp.LocalDate.now
 import org.amshove.kluent.`should equal`
 import org.jetbrains.spek.api.Spek
 import org.threeten.bp.Period
+import org.threeten.bp.LocalDateTime
+import java.util.Date
 
 class KxDateSpec: Spek ({
     describe("KxDate Spec") {
@@ -24,25 +26,25 @@ class KxDateSpec: Spek ({
 
 
         it ("oneWeekFromNow") {
-            val x = 1.weeks.fromNow
+            val x = 1.weeks.later
             LocalDate.now().plusDays(7) `should equal` x
         }
 
 
         it ("oneMonthFromNow") {
-            val x = 1.months.fromNow
+            val x = 1.months.later
             LocalDate.now().plusMonths(1) `should equal` x
         }
 
 
         it ("addDurations") {
-            val x = (4.months + 5.years).fromNow
+            val x = (4.months + 5.years).later
             LocalDate.now().plusMonths(4).plusYears(5) `should equal` x
         }
 
 
         it ("oneHourFromNow") {
-            val x = 1.hours.fromNow
+            val x = 1.hours.later
             //LocalDateTime.now().plusHours(1).truncatedTo(ChronoUnit.HOURS) `should equal`  x.truncatedTo(ChronoUnit.HOURS))
         }
 
@@ -58,6 +60,13 @@ class KxDateSpec: Spek ({
 
         it ("duringAgeInfix") {
             ("1984-11-19" during "2016-11-19").years `should equal` Period.between(LocalDate.parse("1984-11-19"), LocalDate.parse("2016-11-19")).years
+        }
+
+        it ("should toDate") {
+            val dateNow = Date()
+            val localDateTimeNow = LocalDateTime.now()
+            localDateTimeNow.toDate().toLocalDateTime() `should equal` localDateTimeNow
+            dateNow.toLocalDateTime().toDate() `should equal` dateNow
         }
     }
 })
