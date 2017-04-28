@@ -108,7 +108,10 @@ private fun baseDate() = LocalDate.now()
 private fun baseTime() = LocalDateTime.now()
 
 fun Date.toLocalDateTime() =
-    DateTimeUtils.toInstant(this).atZone(ZoneId.systemDefault()).toLocalDateTime()
+        DateTimeUtils.toInstant(this).atZone(ZoneId.systemDefault()).toLocalDateTime()
 
 fun LocalDateTime.toDate() =
-    DateTimeUtils.toDate(this.atZone(ZoneId.systemDefault()).toInstant())
+        DateTimeUtils.toDate(this.atZone(ZoneId.systemDefault()).toInstant())
+
+//val LocalDateTime.epochSecond: Long
+fun LocalDateTime.toEpochSecond() = this.atZone(ZoneId.systemDefault()).toInstant().epochSecond

@@ -1,11 +1,6 @@
 package ru.yole.kxdate
 
-import java.time.Duration
-import java.time.LocalDate
-import java.time.LocalDateTime
-import java.time.Period
-//import java.time.DateTimeUtils
-//import java.time.ZoneId
+import java.time.*
 import java.util.Date
 
 object ago
@@ -98,9 +93,15 @@ private fun baseDate() = LocalDate.now()
 
 private fun baseTime() = LocalDateTime.now()
 
-// TODO
-//fun Date.toLocalDateTime() =
-//    DateTimeUtils.toInstant(this).atZone(ZoneId.systemDefault()).toLocalDateTime()
-//
-//fun LocalDateTime.toDate() =
-//    DateTimeUtils.toDate(this.atZone(ZoneId.systemDefault()).toInstant())
+// @Deprecated instead of Date.toInstant()
+//val Date.instant: Instant
+//    get() = Instant.ofEpochMilli(this.time)
+
+fun Date.toLocalDateTime() =
+        this.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime()
+
+fun LocalDateTime.toDate() =
+        Date.from(this.atZone(ZoneId.systemDefault()).toInstant())
+
+//val LocalDateTime.epochSecond: Long
+fun LocalDateTime.toEpochSecond() = this.atZone(ZoneId.systemDefault()).toInstant().epochSecond
