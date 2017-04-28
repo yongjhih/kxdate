@@ -21,6 +21,7 @@ val yesterday = LocalDate.now() + Period.ofDays(-1L) // or LocalDate.now().minus
 val fourAndFiveYearsAgo = LocalDate.now() + Period.ofMonths(-4L) + Period.ofYears(-5L) // or LocalDate.now().minusMonths(4L).minusYears(5L)
 
 val threeSecondsLaterDate = DateTimeUtils.toDate((LocalDateTime.now() + Duration.ofSeconds(3L)).atZone(ZoneId.systemDefault()).toInstant())
+val nowEpochSeconds = LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant().epochSecond
 ```
 
 After:
@@ -32,6 +33,7 @@ val yesterday = 1.days.ago
 val fourAndFiveYearsAgo = (4.months + 5.years).later
 
 val threeSecondsLaterDate = 3.seconds.later.toDate()
+val nowEpochSeconds = LocalDateTime.now().toEpochSecond()
 ```
 
 Alternatively, you can use the infix call syntax:
